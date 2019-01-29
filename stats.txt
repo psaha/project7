@@ -1,0 +1,17 @@
+# model_dm_final_prasenjit
+Particle masses: 1.331730e+06 Msol
+Total mass: 1.065384e+12 Msol
+Selected cylinder: particles within 1 kpc in xy plane
+Total mass in cylinder: 3.122907e+09 Msol
+
+# model_dm_final_phd
+Particle masses: 1.336670e+06 Msol
+Total mass: 1.069336e+12 Msol
+Selected cylinder: particles within 1 kpc in xy plane
+Total mass in cylinder: 3.183948e+09 Msol
+
+# model_dm_final_phd_hacked
+Particle masses: 1.331470e+06 Msol
+Total mass: 1.065176e+12 Msol
+Selected cylinder: particles within 1 kpc in xy plane
+Total mass in cylinder: 8.561352e+08 Msol
