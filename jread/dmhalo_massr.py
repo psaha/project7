@@ -55,9 +55,9 @@ if __name__ == "__main__":
 
     #Parameters / options:
     include_anal_abund = 'no'
-    include_anal_range = 'no'
+    include_anal_range = 'yes'
     use_fillbet = 'no'
-    include_core = 'yes'
+    include_core = 'no'
 
     # Read in data:
     f = open('Wegg_DM_mass_profile_MW.txt','r')
@@ -118,7 +118,7 @@ if __name__ == "__main__":
                                    oden,tSF_core,Rhalf_core,rhocrit,eta,kappa)
 
     #Range of halo masses to consider:
-    manal_range = [5e11,1e12,5e12]
+    manal_range = [1e12]
 
     #Additional data:
     Posti_Helmi = 1.37e11
@@ -300,8 +300,8 @@ if __name__ == "__main__":
         plt.plot(radii, Menc, lw=2, label="AGAMA{}".format(i))
 
     # limit between core and cusp
-    limrads = np.logspace(-3, 3, 500)
-    plt.plot(limrads, 1e9*limrads**3, lw=2, ls='--', color='black')
+    # limrads = np.logspace(-3, 3, 500)
+    # plt.plot(limrads, 1e9*limrads**3, lw=2, ls='--', color='black')
                     
     plt.ylim([1e6,3e12])
     plt.xlim([0.1,300])
