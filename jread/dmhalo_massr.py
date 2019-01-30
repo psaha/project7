@@ -1,3 +1,7 @@
+import sys
+from agama_reader import enc_mass
+
+
 def cosmo_cfunc(M200,h):
     #From Dutton & Maccio 2014:
     c = 10.**(0.905 - 0.101 * (np.log10(M200*h)-12.))
@@ -55,7 +59,7 @@ if __name__ == "__main__":
     use_fillbet = 'no'
     include_core = 'yes'
 
-    #Read in data:
+    # Read in data:
     f = open('Wegg_DM_mass_profile_MW.txt','r')
     data_W = np.genfromtxt(f)
     f.close()
@@ -278,9 +282,29 @@ if __name__ == "__main__":
                 plt.plot(ranal,(manal_low_cusp+manal_high_cusp)/2.0,\
                          linewidth=2,linestyle='--',color='black',\
                          zorder=0)
+
+    # compare with AGAMA model data
+    if len(sys.argv) > 1:
+        filename = sys.argv[1]
+    else:
+        print("Input filename")
+        sys.exit(1)
+    print(filename)
+
+    with open(filename, 'r') as f:
+        model = np.loadtxt(f)
+
+    Menc, radii = enc_mass(model)
+    print(radii, Menc)
+    plt.plot(radii, Menc, lw=2, color='c', label="AGAMA")
+
+    # limit between core and cusp
+    limrads = np.logspace(-3, 3, 500)
+    plt.plot(limrads, 1e9*limrads**3, lw=2, ls='--', color='black')
                     
     plt.ylim([1e6,3e12])
     plt.xlim([0.1,300])
     
     plt.legend(loc='lower right',fontsize=15)
-    plt.savefig('dmhalo_massr.pdf')
+    # plt.savefig('dmhalo_massr.pdf')
+    plt.show()
