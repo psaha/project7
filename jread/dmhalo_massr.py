@@ -285,18 +285,19 @@ if __name__ == "__main__":
 
     # compare with AGAMA model data
     if len(sys.argv) > 1:
-        filename = sys.argv[1]
+        filename = sys.argv[1:]
     else:
         print("Input filename")
         sys.exit(1)
     print(filename)
 
-    with open(filename, 'r') as f:
-        model = np.loadtxt(f)
+    model = []
+    for i, fyle in enumerate(filename):
+        with open(fyle, 'r') as f:
+            model.append(np.loadtxt(f))
 
-    Menc, radii = enc_mass(model)
-    print(radii, Menc)
-    plt.plot(radii, Menc, lw=2, color='c', label="AGAMA")
+        Menc, radii = enc_mass(model[i])
+        plt.plot(radii, Menc, lw=2, label="AGAMA{}".format(i))
 
     # limit between core and cusp
     limrads = np.logspace(-3, 3, 500)
