@@ -291,13 +291,15 @@ if __name__ == "__main__":
         sys.exit(1)
     print(filename)
 
+    ver_agama = ['3comp','1comp']
+    ver_col   = ['magenta','cyan']
     model = []
     for i, fyle in enumerate(filename):
         with open(fyle, 'r') as f:
             model.append(np.loadtxt(f))
 
         Menc, radii = enc_mass(model[i])
-        plt.plot(radii, Menc, lw=2, label="AGAMA{}".format(i))
+        plt.plot(radii, Menc, lw=2, color=ver_col[i], label="AGAMA{}".format(ver_agama[i]))
 
     # limit between core and cusp
     # limrads = np.logspace(-3, 3, 500)
