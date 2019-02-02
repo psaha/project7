@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     #Parameters / options:
     include_anal_abund = 'no'
-    include_anal_range = 'yes'
+    include_anal_range = 'no'
     use_fillbet = 'no'
     include_core = 'no'
 
@@ -198,19 +198,19 @@ if __name__ == "__main__":
     plt.ylabel(r'$M_{\rm DM}(<r)\,[{\rm M}_\odot]$',\
                    fontsize=myfontsize)
 
-    plt.fill_between(data_W[:,0],data_W[:,1]+data_W[:,2],\
-                         data_W[:,1]+data_W[:,3],\
-                         facecolor='0.65',\
-                         edgecolor='none',zorder=1)
-    plt.plot(data_W[:,0],data_W[:,1],'k',linewidth=mylinewidth,\
-                 label=r'Wegg et al. 2018 $\mid$ RR-Lyrae',zorder=2)
+    # plt.fill_between(data_W[:,0],data_W[:,1]+data_W[:,2],\
+    #                      data_W[:,1]+data_W[:,3],\
+    #                      facecolor='0.65',\
+    #                      edgecolor='none',zorder=1)
+    # plt.plot(data_W[:,0],data_W[:,1],'k',linewidth=mylinewidth,\
+    #              label=r'Wegg et al. 2018 $\mid$ RR-Lyrae',zorder=2)
 
-    plt.fill_between(r_P_use,M_P_low,\
-                         M_P_high,\
-                         facecolor='r',\
-                         edgecolor='none',zorder=1,alpha=0.5)
-    plt.plot(r_P_use,M_P,'r',linewidth=mylinewidth,\
-                 label=r'Portail et al. 2017 $\mid$ Inner Gal.',zorder=2)
+    # plt.fill_between(r_P_use,M_P_low,\
+    #                      M_P_high,\
+    #                      facecolor='r',\
+    #                      edgecolor='none',zorder=1,alpha=0.5)
+    # plt.plot(r_P_use,M_P,'r',linewidth=mylinewidth,\
+    #              label=r'Portail et al. 2017 $\mid$ Inner Gal.',zorder=2)
 
     plt.fill_between(data_CB[:,0],M_CB_low,\
                          M_CB_high,\
@@ -220,30 +220,30 @@ if __name__ == "__main__":
                  label=r'Cole \& Binney 2017 $\mid$ Giant stars',zorder=2)
 
 
-    plt.errorbar(Posti_Helmi_r,Posti_Helmi,\
-                 yerr=Posti_Helmi_err,fmt='o',\
-                 markersize=5,color='purple',ecolor='purple',\
-                 label=r'Posti \& Helmi 2018 $\mid$ GCs',\
-                 zorder=3)
+    # plt.errorbar(Posti_Helmi_r,Posti_Helmi,\
+    #              yerr=Posti_Helmi_err,fmt='o',\
+    #              markersize=5,color='purple',ecolor='purple',\
+    #              label=r'Posti \& Helmi 2018 $\mid$ GCs',\
+    #              zorder=3)
 
-    plt.errorbar(Bovy_streams_r,Bovy_streams,\
-                 yerr=Bovy_streams_err,fmt='o',\
-                 markersize=5,color='magenta',ecolor='magenta',\
-                 label=r'Bovy et al. 2016 $\mid$ Streams',\
-                 zorder=3)
+    # plt.errorbar(Bovy_streams_r,Bovy_streams,\
+    #              yerr=Bovy_streams_err,fmt='o',\
+    #              markersize=5,color='magenta',ecolor='magenta',\
+    #              label=r'Bovy et al. 2016 $\mid$ Streams',\
+    #              zorder=3)
 
-    plt.errorbar(Watkins_r,Watkins,\
-                 yerr=[Watkins_lerr,Watkins_herr],fmt='o',\
-                 markersize=5,color='green',ecolor='green',\
-                 label=r'Watkins et al. 2018 $\mid$ GCs',\
-                 zorder=3)
+    # plt.errorbar(Watkins_r,Watkins,\
+    #              yerr=[Watkins_lerr,Watkins_herr],fmt='o',\
+    #              markersize=5,color='green',ecolor='green',\
+    #              label=r'Watkins et al. 2018 $\mid$ GCs',\
+    #              zorder=3)
 
-    plt.fill_between(data_K[:,0],data_K[:,1]+data_K[:,2],\
-                         data_K[:,1]+data_K[:,3],\
-                         facecolor='green',alpha=0.5,\
-                         edgecolor='none',zorder=1)
-    plt.plot(data_K[:,0],data_K[:,1],'g',linewidth=mylinewidth,\
-                 label=r'Kafle et al. 2014 $\mid$ halo stars',zorder=2)
+    # plt.fill_between(data_K[:,0],data_K[:,1]+data_K[:,2],\
+    #                      data_K[:,1]+data_K[:,3],\
+    #                      facecolor='green',alpha=0.5,\
+    #                      edgecolor='none',zorder=1)
+    # plt.plot(data_K[:,0],data_K[:,1],'g',linewidth=mylinewidth,\
+    #              label=r'Kafle et al. 2014 $\mid$ halo stars',zorder=2)
 
     if (include_anal_abund == 'yes'):
         plt.fill_between(ranal,manal_low_cusp,manal_high_cusp,\
@@ -291,7 +291,7 @@ if __name__ == "__main__":
         sys.exit(1)
     print(filename)
 
-    ver_agama = ['3comp','1comp']
+    ver_agama = ['3comp','heatedCore']
     ver_col   = ['magenta','cyan']
     model = []
     for i, fyle in enumerate(filename):
@@ -306,7 +306,7 @@ if __name__ == "__main__":
     # plt.plot(limrads, 1e9*limrads**3, lw=2, ls='--', color='black')
                     
     plt.ylim([1e6,3e12])
-    plt.xlim([0.1,300])
+    plt.xlim([0.1,400])
     
     plt.legend(loc='lower right',fontsize=15)
     # plt.savefig('dmhalo_massr.pdf')
